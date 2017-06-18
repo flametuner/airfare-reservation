@@ -1,4 +1,4 @@
-package br.ufsc.gustavo.model;
+package br.ufsc.gustavo.model.flight;
 
 public class Chartered extends Flight {
 
