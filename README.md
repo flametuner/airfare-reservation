@@ -1,4 +1,4 @@
-# AirfareReservation
+# AirfareReservation - Equipe 15
 Esse projeto tem como intuito apresentar tudo que foi "aprendido" na aula da minha querida prof Luciana Rech (Luci para mais intimos huehue).
 
 Nesse projeto temos: MVC(Chato pra crl), Herança(ez), Polimorfismo(meu irmão de 1 ano sabe), Laços de repetição(Até meu gato sabe), etc.
