@@ -15,11 +15,13 @@ public class MainMenu {
 		b.append("\n");
 		b.append("1. Cadastrar voo.");
 		b.append("\n");
-		b.append("2. Cancelar voo.");
+		b.append("2. Visualizar voo.");
 		b.append("\n");
-		b.append("3. Reserva de assentos.");
+		b.append("3. Cancelar voo.");
 		b.append("\n");
-		b.append("4. Finish");
+		b.append("4. Reservas.");
+		b.append("\n");
+		b.append("5. Finish.");
 		return Integer.valueOf(JOptionPane.showInputDialog(b.toString()));
 	}
 
@@ -89,6 +91,31 @@ public class MainMenu {
 		String destiny = JOptionPane.showInputDialog("Digite o destino do voo:");
 		int seats = Integer.valueOf(JOptionPane.showInputDialog("Digite o numero de assentos:"));
 		return new Commercial(flightId, destiny, origin, seats);
+	}
+
+	public void displayFlight(Flight flight) {
+		StringBuilder b = new StringBuilder();
+		b.append("Numero do voo: " + flight.getId());
+		b.append("\n");
+		b.append("Origem: " + flight.getOrigin());
+		b.append("\n");
+		b.append("Destino: " + flight.getDestiny());
+		b.append("\n");
+		if(flight instanceof Transport) {
+			Transport transport = (Transport) flight;
+			b.append("Carga: (" + transport.getCurrentWeight() + "/" + transport.getMaxWeight() + ")");
+			b.append("\n");
+			b.append("Slot: (" + transport.getCurrentLoad() + "/" + transport.getLoads().length + ")");
+		} else if(flight instanceof Commercial) {
+			Commercial commercial = (Commercial) flight;
+			b.append("Reservas de Primeira Classe: (" + commercial.getCurrentSeats() + "/" + commercial.getSeats().length + ")");
+			b.append("\n");
+			b.append("Reservas de Classe Economica: (" + commercial.getCurrentEconomic() + "/" + commercial.getEconomicClass().length + ")");
+		} else if(flight instanceof Chartered) {
+			Chartered chartered = (Chartered) flight;
+			b.append("Reservas: (" + chartered.getCurrentSeats() + "/" + chartered.getSeats().length + ")");
+		}
+		JOptionPane.showMessageDialog(null, b.toString());
 	}
 
 }

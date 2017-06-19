@@ -22,13 +22,16 @@ public class Main {
 			case 1: // CADASTRO DE VOO
 				registerFlight();
 				break;
-			case 2: // CANCELAMENTO DE VOO
+			case 2: // VISUALIZAR VOO
+				viewFlight();
+				break;
+			case 3: // CANCELAR VOO
 				cancelFlight();
 				break;
-			case 3: // RESERVA DE ASSENTOS
+			case 4: // RESERVA DE ASSENTOS
 				reserveSeat();
 				break;
-			case 4:
+			case 5:
 				running = false;
 				break;
 			default:
@@ -71,6 +74,21 @@ public class Main {
 		} else {
 			menu.displayFlightError();
 		}
+	}
+	
+	private void viewFlight() {
+		Flight flight = null;
+		int id;
+		while (true) {
+			id = menu.displaySelectFlight();
+			flight = control.getFlight(id);
+			if (flight != null) {
+				menu.displayFlight(flight);
+				break;
+			}
+			menu.displayFlightNotValid();
+		}
+		
 	}
 
 	private void cancelFlight() {

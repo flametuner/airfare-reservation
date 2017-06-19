@@ -15,4 +15,12 @@ public class Chartered extends Flight {
 		return seats;
 	}
 	
+	public int getCurrentSeats() {
+		int current = 0;
+		for (int i = 0; i < seats.length; i++)
+			if (seats[i] != null)
+				++current;
+		return current;
+	}
+	
 }

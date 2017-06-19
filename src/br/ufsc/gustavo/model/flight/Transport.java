@@ -19,16 +19,23 @@ public class Transport extends Flight {
 
 	public double getCurrentWeight() {
 		double d = 0;
-		for(int i = 0; i < loads.length; i++) {
-			if(loads[i] != null)
+		for (int i = 0; i < loads.length; i++) {
+			if (loads[i] != null)
 				d += loads[i].getWeight();
 		}
 		return d;
 	}
 
+	public int getCurrentLoad() {
+		int current = 0;
+		for (int i = 0; i < loads.length; i++)
+			if (loads[i] != null)
+				++current;
+		return current;
+	}
+
 	public Load[] getLoads() {
 		return loads;
 	}
-	
 
 }

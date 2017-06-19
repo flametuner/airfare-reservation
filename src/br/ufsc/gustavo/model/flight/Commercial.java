@@ -14,5 +14,13 @@ public class Commercial extends Chartered {
 	public Passenger[] getEconomicClass() {
 		return economicClass;
 	}
+	
+	public int getCurrentEconomic() {
+		int current = 0;
+		for (int i = 0; i < economicClass.length; i++)
+			if (economicClass[i] != null)
+				++current;
+		return current;
+	}
 
 }
