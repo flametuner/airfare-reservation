@@ -3,7 +3,6 @@ package br.ufsc.gustavo.view;
 import javax.swing.JOptionPane;
 
 import br.ufsc.gustavo.model.flight.Flight;
-import br.ufsc.gustavo.model.passenger.Passenger;
 
 public class MainMenu {
 
@@ -22,43 +21,47 @@ public class MainMenu {
 	}
 
 	public void displayWrongOption() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Esta opção não é válida");
 	}
 
 	public void displayFinish() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Fim do programa");
 	}
 
 	public int displaySelectFlight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Integer.valueOf(JOptionPane.showInputDialog("Digite o numero do Voo:"));
 	}
 
-	public void displayCancelSuccess() {
-		// TODO Auto-generated method stub
-
+	public void displayFlightCancelSuccess() {
+		JOptionPane.showMessageDialog(null, "Voo cancelado com sucesso");
 	}
 
 	public void displayFlightNotValid() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Voo invalido");
 	}
 
 	public int displayFlightType() {
-		// TODO Auto-generated method stub
-		return 0;
+		StringBuilder b = new StringBuilder();
+		b.append("Escolha o tipo de voo:");
+		b.append("\n");
+		b.append("1. Comercial.");
+		b.append("\n");
+		b.append("2. Fretado.");
+		b.append("\n");
+		b.append("3. Transporte.");
+		return Integer.valueOf(JOptionPane.showInputDialog(b.toString()));
+	}
+	
+	public void displayFlightError() {
+		JOptionPane.showMessageDialog(null, "Erro ao cadastrar voo");
 	}
 
 	public void displayNoSlotAvailable() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Não há vagas de voos disponíveis");
 	}
 
 	public void displayFlightRegisterSuccess(int i) {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Voo de numero " + i + " registrado com sucesso!");
 	}
 
 	// Flight Creeation

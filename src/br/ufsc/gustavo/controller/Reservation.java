@@ -44,7 +44,8 @@ public class Reservation {
 
 	private void registerReservation() {
 		if (flight instanceof Transport) {
-
+			Transport transport = (Transport) flight;
+			
 		} else if (flight instanceof Commercial) {
 			Commercial commercial = (Commercial) flight;
 			switch (menu.displayClassMenu()) {
@@ -60,7 +61,18 @@ public class Reservation {
 			}
 		} else {
 			Chartered chartered = (Chartered) flight;
-			chooseSeat(chartered.getSeats(), 0);
+			if(checkIfFull(chartered.getSeats())) {
+				menu.displayFlightFull();
+				return;
+			}
+			Passenger passager = menu.displayPassenger();
+			for(int i = 0; i < chartered.getSeats().length; i++) {
+				if(chartered.getSeats()[i] == null) {
+					chartered.getSeats()[i] = passager;
+					menu.displaySeatSuccess(i);
+					return;
+				}
+			}
 		}
 	}
 
@@ -116,7 +128,8 @@ public class Reservation {
 
 	private void checkReservation() {
 		if (flight instanceof Transport) {
-
+			Transport transport = (Transport) flight;
+			
 		} else if (flight instanceof Commercial) {
 			int assento = menu.displayTypeSeatId();
 			Commercial commercial = (Commercial) flight;
@@ -160,7 +173,8 @@ public class Reservation {
 
 	private void removeReservation() {
 		if (flight instanceof Transport) {
-
+			Transport transport = (Transport) flight;
+			
 		} else if (flight instanceof Commercial) {
 			int assento = menu.displayTypeSeatId();
 			Commercial commercial = (Commercial) flight;

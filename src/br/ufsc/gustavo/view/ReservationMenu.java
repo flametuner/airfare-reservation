@@ -7,13 +7,21 @@ import br.ufsc.gustavo.model.passenger.Passenger;
 public class ReservationMenu {
 
 	public int displayPassengerMenu() {
-		// TODO Auto-generated method stub
-		return 0;
+		StringBuilder b = new StringBuilder();
+		b.append("Menu (Escolha uma Opção):");
+		b.append("\n");
+		b.append("1. Cadastrar reserva.");
+		b.append("\n");
+		b.append("2. Checkar reserva.");
+		b.append("\n");
+		b.append("3. Cancelar reserva.");
+		b.append("\n");
+		b.append("4. Voltar ao menu principal");
+		return Integer.valueOf(JOptionPane.showInputDialog(b.toString()));
 	}
 
 	public void displayWrongOption() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "Esta opção não é válida");
 	}
 
 	public int displayClassMenu() {
@@ -25,13 +33,12 @@ public class ReservationMenu {
 	}
 
 	public boolean displayTryAnotherClass() {
-		// TODO Auto-generated method stub
-		return false;
+		int i = JOptionPane.showConfirmDialog(null, "Essa classe esta lotada. Voce deseja tentar outra classe?");
+		return i == 1;
 	}
 
 	public void displayFlightFull() {
-		// TODO Auto-generated method stub
-
+		JOptionPane.showMessageDialog(null, "O voo esta lotado");
 	}
 	
 	public Passenger displayPassenger() {
@@ -41,43 +48,39 @@ public class ReservationMenu {
 	}
 
 	public int displayChooseSeat(String s) {
-		// TODO Auto-generated method stub
-		return 0;
+		return Integer.valueOf(JOptionPane.showInputDialog("Digite o numero do assento: \n" + s));
 	}
 
 	public void displaySeatNotAvailable() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "Assento nao disponível");
 	}
 
 	public void displaySeatSuccess(int assento) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "Assento " + assento + " selecionado com sucesso");
 	}
 
 	public void displaySeatNotValid() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "Assento invalido");
 	}
 
 	public int displayTypeSeatId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Integer.valueOf(JOptionPane.showInputDialog("Digite o numero do assento:"));
 	}
 
 	public void displayPassengerNull() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "Passageiro invalido");
 	}
 
 	public void displayPassengerInfo(Passenger passenger) {
-		// TODO Auto-generated method stub
-		
+		StringBuilder b = new StringBuilder();
+		b.append("Nome do passageiro: " + passenger.getName());
+		b.append("\n");
+		b.append("CPF do passageiro: " + passenger.getCpf());
+		JOptionPane.showMessageDialog(null, b.toString());
 	}
 
 	public void displayRemovedSuccess() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "Passageiro removido com sucesso");
 	}
 
 }

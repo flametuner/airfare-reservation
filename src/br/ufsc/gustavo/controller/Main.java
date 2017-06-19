@@ -68,7 +68,7 @@ public class Main {
 		if (i != -1) {
 			menu.displayFlightRegisterSuccess(i);
 		} else {
-			menu.displayFlightType();
+			menu.displayFlightError();
 		}
 	}
 
@@ -77,7 +77,7 @@ public class Main {
 		while (true) {
 			id = menu.displaySelectFlight();
 			if (control.cancelFlight(id)) {
-				menu.displayCancelSuccess();
+				menu.displayFlightCancelSuccess();
 				break;
 			}
 			menu.displayFlightNotValid();
