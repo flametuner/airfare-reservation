@@ -1,15 +1,17 @@
 package br.ufsc.gustavo.model.flight;
 
+import br.ufsc.gustavo.model.passenger.Passenger;
+
 public class Chartered extends Flight {
 
-	private int[] seats;
+	private Passenger[] seats;
 
-	public Chartered(int id, String destiny, String origin, int[] seats) {
+	public Chartered(int id, String destiny, String origin, int seats) {
 		super(id, destiny, origin);
-		this.seats = seats;
+		this.seats = new Passenger[seats];
 	}
 	
-	public int[] getSeats() {
+	public Passenger[] getSeats() {
 		return seats;
 	}
 	

@@ -1,4 +1,4 @@
-package br.ufsc.gustavo.controller;
+package br.ufsc.gustavo.model;
 
 import br.ufsc.gustavo.model.flight.Flight;
 
@@ -6,8 +6,8 @@ public class Controller {
 
 	private Flight[] flights;
 	
-	public Controller() {
-		flights = new Flight[3];
+	public Controller(int flightNumber) {
+		flights = new Flight[flightNumber];
 	}
 	
 	public Flight getFlight(int i) {
