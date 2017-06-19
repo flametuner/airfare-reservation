@@ -2,7 +2,10 @@ package br.ufsc.gustavo.view;
 
 import javax.swing.JOptionPane;
 
+import br.ufsc.gustavo.model.flight.Chartered;
+import br.ufsc.gustavo.model.flight.Commercial;
 import br.ufsc.gustavo.model.flight.Flight;
+import br.ufsc.gustavo.model.flight.Transport;
 
 public class MainMenu {
 
@@ -66,19 +69,26 @@ public class MainMenu {
 
 	// Flight Creeation
 
-	public Flight createTransportFlight() {
-		// TODO Auto-generated method stub
-		return null;
+	public Flight createTransportFlight(int flightId) {
+		String origin = JOptionPane.showInputDialog("Digite a origem do voo:");
+		String destiny = JOptionPane.showInputDialog("Digite o destino do voo:");
+		int slots = Integer.valueOf(JOptionPane.showInputDialog("Digite o numero de slots de carga:"));
+		double weight = Double.parseDouble(JOptionPane.showInputDialog("Digite a carga máxima suportada:"));
+		return new Transport(flightId, destiny, origin, weight, slots);
 	}
 
-	public Flight createCharteredFlight() {
-		// TODO Auto-generated method stub
-		return null;
+	public Flight createCharteredFlight(int flightId) {
+		String origin = JOptionPane.showInputDialog("Digite a origem do voo:");
+		String destiny = JOptionPane.showInputDialog("Digite o destino do voo:");
+		int seats = Integer.valueOf(JOptionPane.showInputDialog("Digite o numero de assentos:"));
+		return new Chartered(flightId, destiny, origin, seats);
 	}
 
-	public Flight createCommercialFlight() {
-		// TODO Auto-generated method stub
-		return null;
+	public Flight createCommercialFlight(int flightId) {
+		String origin = JOptionPane.showInputDialog("Digite a origem do voo:");
+		String destiny = JOptionPane.showInputDialog("Digite o destino do voo:");
+		int seats = Integer.valueOf(JOptionPane.showInputDialog("Digite o numero de assentos:"));
+		return new Commercial(flightId, destiny, origin, seats);
 	}
 
 }

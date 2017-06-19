@@ -2,6 +2,7 @@ package br.ufsc.gustavo.view;
 
 import javax.swing.JOptionPane;
 
+import br.ufsc.gustavo.model.passenger.Load;
 import br.ufsc.gustavo.model.passenger.Passenger;
 
 public class ReservationMenu {
@@ -68,7 +69,7 @@ public class ReservationMenu {
 	}
 
 	public void displayPassengerNull() {
-		JOptionPane.showMessageDialog(null, "Passageiro invalido");
+		JOptionPane.showMessageDialog(null, "Passageiro nao existe");
 	}
 
 	public void displayPassengerInfo(Passenger passenger) {
@@ -81,6 +82,47 @@ public class ReservationMenu {
 
 	public void displayRemovedSuccess() {
 		JOptionPane.showMessageDialog(null, "Passageiro removido com sucesso");
+	}
+
+	public Load registerLoadInfo() {
+		String nome = JOptionPane.showInputDialog("Digite o nome do Dono da carga:");
+		String cpf = JOptionPane.showInputDialog("Digite o CPF do Dono da carga:");
+		double weight = Double.parseDouble(JOptionPane.showInputDialog("Digite o tamanho da carga (KG):"));
+		return new Load(nome, cpf, weight);
+	}
+
+	public void displayTransportFlightFull() {
+		JOptionPane.showMessageDialog(null, "O Voo de carga está cheio");
+	}
+
+	public void displayLoadSuccess(int i) {
+		JOptionPane.showMessageDialog(null, "A carga de numero " + i + " foi registrada com sucesso");
+	}
+
+	public void displayLoadTooLarge() {
+		JOptionPane.showMessageDialog(null, "A carga é muito pesada");
+	}
+
+	public int displayTypeLoadId() {
+		return Integer.valueOf(JOptionPane.showInputDialog("Digite o numero da carga:"));
+	}
+
+	public void displayLoadNotValid() {
+		JOptionPane.showMessageDialog(null, "Carga invalida");
+	}
+
+	public void displayLoadNull() {
+		JOptionPane.showMessageDialog(null, "Carga nao existe");
+	}
+
+	public void displayLoadInfo(Load load) {
+		StringBuilder b = new StringBuilder();
+		b.append("Nome do Dono: " + load.getName());
+		b.append("\n");
+		b.append("CPF do Dono: " + load.getCpf());
+		b.append("\n");
+		b.append("Peso da carga: " + load.getWeight());
+		JOptionPane.showMessageDialog(null, b.toString());
 	}
 
 }

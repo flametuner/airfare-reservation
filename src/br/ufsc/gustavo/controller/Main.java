@@ -45,18 +45,19 @@ public class Main {
 		}
 		Flight flight = null;
 		boolean wrongOp = true;
+		int nextFlightId = control.getNextFlightId();
 		while (wrongOp) {
 			switch (menu.displayFlightType()) {
 			case 1: // COMERCIAL
-				flight = menu.createCommercialFlight();
+				flight = menu.createCommercialFlight(nextFlightId);
 				wrongOp = false;
 				break;
 			case 2: // FRETADO
-				flight = menu.createCharteredFlight();
+				flight = menu.createCharteredFlight(nextFlightId);
 				wrongOp = false;
 				break;
 			case 3: // TRANSPORTE
-				flight = menu.createTransportFlight();
+				flight = menu.createTransportFlight(nextFlightId);
 				wrongOp = false;
 				break;
 			default:

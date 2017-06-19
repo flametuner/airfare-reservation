@@ -23,6 +23,15 @@ public class Controller {
 		return false;
 	}
 	
+	public int getNextFlightId() {
+		for(int i = 0; i < flights.length; i++) {
+			if(flights[i] == null){
+				return i;
+			}
+		}
+		return -1;
+	}
+	
 	public int addFlight(Flight flight) {
 		for(int i = 0; i < flights.length; i++) {
 			if(flights[i] == null){

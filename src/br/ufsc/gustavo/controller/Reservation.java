@@ -6,6 +6,7 @@ import br.ufsc.gustavo.model.flight.Chartered;
 import br.ufsc.gustavo.model.flight.Commercial;
 import br.ufsc.gustavo.model.flight.Flight;
 import br.ufsc.gustavo.model.flight.Transport;
+import br.ufsc.gustavo.model.passenger.Load;
 import br.ufsc.gustavo.model.passenger.Passenger;
 import br.ufsc.gustavo.view.ReservationMenu;
 
@@ -45,7 +46,22 @@ public class Reservation {
 	private void registerReservation() {
 		if (flight instanceof Transport) {
 			Transport transport = (Transport) flight;
-			
+			if(checkIfFull(transport.getLoads())) {
+				menu.displayTransportFlightFull();
+				return;
+			}
+			Load info = menu.registerLoadInfo();
+			if(transport.getCurrentWeight() + info.getWeight() > transport.getMaxWeight()) {
+				menu.displayLoadTooLarge();
+				return;
+			}
+			for(int i = 0; i < transport.getLoads().length; i++) {
+				if(transport.getLoads()[i] == null) {
+					transport.getLoads()[i] = info;
+					menu.displayLoadSuccess(i);
+					return;
+				}
+			}
 		} else if (flight instanceof Commercial) {
 			Commercial commercial = (Commercial) flight;
 			switch (menu.displayClassMenu()) {
@@ -120,8 +136,8 @@ public class Reservation {
 		}
 	}
 
-	private boolean checkIfFull(Passenger[] seats) {
-		Passenger[] copy = Arrays.copyOf(seats, seats.length);
+	private boolean checkIfFull(Object[] seats) {
+		Object[] copy = Arrays.copyOf(seats, seats.length);
 		Arrays.sort(copy);
 		return Arrays.binarySearch(copy, null) >= 0;
 	}
@@ -129,7 +145,17 @@ public class Reservation {
 	private void checkReservation() {
 		if (flight instanceof Transport) {
 			Transport transport = (Transport) flight;
-			
+			int assento = menu.displayTypeLoadId();
+			if (assento < 0 || assento >= transport.getLoads().length) {
+				menu.displayLoadNotValid();
+				return;
+			}
+			Load load = transport.getLoads()[assento];
+			if (load == null) {
+				menu.displayLoadNull();
+				return;
+			}
+			menu.displayLoadInfo(load);
 		} else if (flight instanceof Commercial) {
 			int assento = menu.displayTypeSeatId();
 			Commercial commercial = (Commercial) flight;
@@ -174,7 +200,17 @@ public class Reservation {
 	private void removeReservation() {
 		if (flight instanceof Transport) {
 			Transport transport = (Transport) flight;
-			
+			int assento = menu.displayTypeSeatId();
+			if (assento < 0 || assento >= transport.getLoads().length) {
+				menu.displayLoadNotValid();
+				return;
+			}
+			if (transport.getLoads()[assento] == null) {
+				menu.displayLoadNull();
+				return;
+			}
+			transport.getLoads()[assento] = null;
+			menu.displayRemovedSuccess();
 		} else if (flight instanceof Commercial) {
 			int assento = menu.displayTypeSeatId();
 			Commercial commercial = (Commercial) flight;
@@ -214,6 +250,7 @@ public class Reservation {
 				menu.displayPassengerNull();
 				return;
 			}
+			chartered.getSeats()[assento] = null;
 			menu.displayRemovedSuccess();
 		}
 	}

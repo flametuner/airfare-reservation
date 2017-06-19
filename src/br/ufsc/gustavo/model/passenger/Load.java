@@ -1,20 +1,15 @@
 package br.ufsc.gustavo.model.passenger;
 
-public class Load {
+public class Load extends Passenger{
 	private double weight;
-	private String description;
 
-	public Load(double weight, String description) {
+	public Load(String name, String cpf, double weight) {
+		super(name, cpf);
 		this.weight = weight;
-		this.description = description;
 	}
 
 	public double getWeight() {
 		return weight;
-	}
-
-	public String getDescription() {
-		return description;
 	}
 
 }
