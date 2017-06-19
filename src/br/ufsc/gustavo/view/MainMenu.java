@@ -21,28 +21,14 @@ public class MainMenu {
 		return Integer.valueOf(JOptionPane.showInputDialog(b.toString()));
 	}
 
-	public int displayClassMenu() {
-		StringBuilder b = new StringBuilder();
-		b.append("1. Primeira classe.");
-		b.append("\n");
-		b.append("2. Classe economica.");
-		return Integer.valueOf(JOptionPane.showInputDialog(b.toString()));
-	}
-
-	public Passenger displayPassenger() {
-		String nome = JOptionPane.showInputDialog("Digite o nome do passageiro:");
-		String cpf = JOptionPane.showInputDialog("Digite o CPF do passageiro:");
-		return new Passenger(nome, cpf);
-	}
-
 	public void displayWrongOption() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void displayFinish() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int displaySelectFlight() {
@@ -52,12 +38,12 @@ public class MainMenu {
 
 	public void displayCancelSuccess() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void displayFlightNotValid() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int displayFlightType() {
@@ -67,14 +53,14 @@ public class MainMenu {
 
 	public void displayNoSlotAvailable() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void displayFlightRegisterSuccess(int i) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	// Flight Creeation
 
 	public Flight createTransportFlight() {
@@ -91,5 +77,5 @@ public class MainMenu {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }
