@@ -1,7 +1,5 @@
 package br.ufsc.gustavo.controller;
 
-import java.util.Arrays;
-
 import br.ufsc.gustavo.model.flight.Chartered;
 import br.ufsc.gustavo.model.flight.Commercial;
 import br.ufsc.gustavo.model.flight.Flight;
@@ -137,9 +135,11 @@ public class Reservation {
 	}
 
 	private boolean checkIfFull(Object[] seats) {
-		Object[] copy = Arrays.copyOf(seats, seats.length);
-		Arrays.sort(copy);
-		return Arrays.binarySearch(copy, null) >= 0;
+		for(int i = 0; i < seats.length; i++) {
+			if(seats[i] == null)
+				return false;
+		}
+		return true;
 	}
 
 	private void checkReservation() {

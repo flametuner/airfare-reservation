@@ -11,6 +11,8 @@ public class Controller {
 	}
 	
 	public Flight getFlight(int i) {
+		if(i >= flights.length)
+			return null;
 		return flights[i];
 	}
 	
@@ -43,7 +45,7 @@ public class Controller {
 	}
 	
 	public boolean cancelFlight(int i) {
-		if(flights[i] == null)
+		if(getFlight(i) == null)
 			return false;
 		flights[i] = null;
 		return true;
