@@ -1,5 +1,5 @@
 # Airfare Reservation - Team 15
-Esse projeto tem como intuito apresentar tudo que foi "aprendido" na aula da minha querida prof Luciana Rech (Luci para mais intimos huehue).
+Esse projeto tem como intuito apresentar tudo que foi "aprendido" na aula da minha querida prof Luciana Rech.
 
 Nesse projeto temos: MVC, Herança, Polimorfismo, Laços de repetição, etc.
 
